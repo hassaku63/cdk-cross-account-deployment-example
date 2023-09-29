@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18.x
+    commands:
+      - yum update -y
+      - npm ci
+  # pre_build:
+  #   commands:
+  #     - cd /${CODEBUILD_SRC_DIR}/${PROJECT_DIR}
+  #     - echo "Run tests..."
+  #     - npm run test
+  build:
+    commands:
+      - echo Start build...
+      - npx cdk deploy --require-approval never
+  # post_build:
+  #   commands:
+  #     - echo Start post_build...
